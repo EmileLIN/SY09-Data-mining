@@ -4,6 +4,7 @@ source("fonctions-tp3//ceuc.app.R")
 source("fonctions-tp3/ceuc.val.r")
 source("fonctions-tp3/kppv.app.r")
 source("fonctions-tp3//kppv.val.R")
+source("fonctions-tp3//front.ceuc.R")
 
 library(MASS)
 
@@ -86,6 +87,13 @@ Estimation_interval_confiance_ceuc <- function(X,z,N,alpha)
     
     Error_app[i]<- Error_proba(class_app,zapp,length(zapp))
     Error_tst[i]<- Error_proba(class_tst,ztst,length(ztst))
+    
+    name <- paste(c("graphe_ceuc",i,".png"))
+          
+    png(name)
+    front.ceuc(ceuc.val,mu,X,z)
+    dev.off()
+  
     
   }
   
