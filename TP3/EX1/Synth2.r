@@ -18,9 +18,9 @@ print(EMV)
 N <- 20
 alpha <- 0.95
 
-res_ceuc <- Estimation_interval_confiance_ceuc(X,z,N,alpha)
-print("The result of ceuc is ")
-print(res_ceuc)
+#res_ceuc <- Estimation_interval_confiance_ceuc(X,z,N,alpha)
+#print("The result of ceuc is ")
+#print(res_ceuc)
 #moyen_app:0.006306306
 #moyen_tst: 0.006586826
 #IC_app:0.006304685,0.006307928
@@ -28,9 +28,9 @@ print(res_ceuc)
 
 
 
-#res_ppv <- estimation_interval_confidence_ppv(X,z,N,alpha)
-#print("The result of ppv is ")
-#print(res_ppvs)
+res_ppv <- estimation_interval_confidence_ppv(X,z,N,alpha)
+print("The result of ppv is ")
+print(res_ppv)
 #moyen_app:0.0047
 #moyen_tst: 0.0066
 #IC_app:0.004697,0.004703

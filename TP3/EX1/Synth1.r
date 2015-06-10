@@ -15,9 +15,9 @@ X_40 <- synth1_40[,1:2]
 z_40 <- synth1_40[,3]
 n <- dim(X_40)[1]
 
-EMV_40<-EMV_estimation(X_40,z_40)
-print("EMV 40 is ")
-print(EMV_40)
+#EMV_40<-EMV_estimation(X_40,z_40)
+#print("EMV 40 is ")
+#print(EMV_40)
 #pi:0.55,0.45
 #mu1:-1.904681,0.698841
 #mu2:0.8808594,0.8587835
@@ -36,9 +36,9 @@ X_100 <- synth1_100[,1:2]
 z_100 <- synth1_100[,3]
 n <- dim(X_100)[1]
 
-EMV_100<-EMV_estimation(X_100,z_100)
-print("EMV 100 is ")
-print(EMV_100)
+#EMV_100<-EMV_estimation(X_100,z_100)
+#print("EMV 100 is ")
+#print(EMV_100)
 
 #[1] "EMV 100 is "
 #$pi1
@@ -72,9 +72,9 @@ X_500 <- synth1_500[,1:2]
 z_500 <- synth1_500[,3]
 n <- dim(X_500)[1]
 
-EMV_500<-EMV_estimation(X_500,z_500)
-print("EMV 500 is ")
-print(EMV_500)
+#EMV_500<-EMV_estimation(X_500,z_500)
+#print("EMV 500 is ")
+#print(EMV_500)
 
 #$pi1
 #[1] 0.48
@@ -105,9 +105,9 @@ X_1000 <- synth1_1000[,1:2]
 z_1000 <- synth1_1000[,3]
 n <- dim(X_1000)[1]
 
-EMV_1000<-EMV_estimation(X_1000,z_1000)
-print("EMV 1000 is ")
-print(EMV_1000)
+#EMV_1000<-EMV_estimation(X_1000,z_1000)
+#print("EMV 1000 is ")
+#print(EMV_1000)
 
 #$pi1
 #[1] 0.488
@@ -133,15 +133,17 @@ print(EMV_1000)
 #V1  1.00246869 -0.02488749
 #V2 -0.02488749  1.02228782
 
+
+
 #Question 02 
 
 N <- 20
 alpha <- 0.95
 
 #Synth1-40
-res_40 <- Estimation_interval_confiance_ceuc(X_40,z_40,N,alpha)
-print("The result of 40 is ")
-print(res_40)
+#res_40 <- Estimation_interval_confiance_ceuc(X_40,z_40,N,alpha)
+#print("The result of 40 is ")
+#print(res_40)
 
 #$moyen_app
 #[1] 0.1240741
@@ -156,9 +158,9 @@ print(res_40)
 #[1] 0.1112496 0.1118274
 
 #Synth1-100
-res_100 <-Estimation_interval_confiance_ceuc(X_100,z_100,N,alpha)
-print("The result of 100 is ")
-print(res_100)
+#res_100 <-Estimation_interval_confiance_ceuc(X_100,z_100,N,alpha)
+#print("The result of 100 is ")
+#print(res_100)
 
 #$moyen_app
 #[1] 0.1439394
@@ -174,9 +176,9 @@ print(res_100)
 
 
 #Synth1-500
-res_500 <- Estimation_interval_confiance_ceuc(X_500,z_500,N,alpha)
-print("The result of 500 is ")
-print(res_500)
+#res_500 <- Estimation_interval_confiance_ceuc(X_500,z_500,N,alpha)
+#print("The result of 500 is ")
+#print(res_500)
 
 #$moyen_app
 #[1] 0.1223724
@@ -191,9 +193,9 @@ print(res_500)
 #[1] 0.1188272 0.1188973
 
 #Synth1-1000
-res_1000 <- Estimation_interval_confiance_ceuc(X_1000,z_1000,N,alpha)
-print("The result of 1000 is ")
-print(res_1000)
+#res_1000 <- Estimation_interval_confiance_ceuc(X_1000,z_1000,N,alpha)
+#print("The result of 1000 is ")
+#print(res_1000)
 
 #$moyen_app
 #[1] 0.1048799
@@ -208,6 +210,8 @@ print(res_1000)
 #10112[1] 0.1121163 0.1121352
 
 #Question 03
+if(FALSE)
+{
 nppv <- c(3,5,7,9,11,13,15)
 for(i in 1:10)
 {
@@ -216,18 +220,17 @@ for(i in 1:10)
   print(K_best_40)
 }
 #the most frequent k is 3
-
+}
 
 #Question04
 N <- 20
 alpha <- 0.95
 
 #Synth1-40
-if(FALSE)
-{
-res_40_ppv <- estimation_interval_confidence_ppv(X_40,z_40,N,alpha)
-print("The ppv result of 40 is ")
-print(res_40_ppv)
+
+#res_40_ppv <- estimation_interval_confidence_ppv(X_40,z_40,N,alpha)
+#print("The ppv result of 40 is ")
+#print(res_40_ppv)
 #moyen_app: 0.08
 #moyen_tst: 0.13
 #IC_app:0.07822647, 0.08177353
@@ -235,18 +238,18 @@ print(res_40_ppv)
 
 
 #Synth1-100
-res_100_ppv <- estimation_interval_confidence_ppv(X_100,z_100,N,alpha)
-print("The ppv result of 100 is ")
-print(res_100_ppv)
+#res_100_ppv <- estimation_interval_confidence_ppv(X_100,z_100,N,alpha)
+#print("The ppv result of 100 is ")
+#print(res_100_ppv)
 #moyen_app: 0.081
 #moyen_tst: 0.11
 #IC_app:0.08061623,0.08138377
 #IC_tst:0.1096162,0.1103838
 
 
-res_500_ppv <- estimation_interval_confidence_ppv(X_500,z_500,N,alpha)
-print("The ppv result of 500 is ")
-print(res_500_ppv)
+#res_500_ppv <- estimation_interval_confidence_ppv(X_500,z_500,N,alpha)
+#print("The ppv result of 500 is ")
+#print(res_500_ppv)
 #moyen_app: 0.0694
 #moyen_tst: 0.0844
 #IC_app:0.0693309,0.06946091
@@ -261,7 +264,7 @@ print(res_1000_ppv)
 #moyen_tst: 0.0736
 #IC_app:0.05567157,0.005572843
 #IC_tst:0.07357157,0.07362843
-}
+
 
 
 

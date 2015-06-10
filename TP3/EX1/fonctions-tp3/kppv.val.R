@@ -19,8 +19,9 @@ kppv.val <- function(Xapp,zapp,K,Xtst)
     
     index <- indexOf_K_Minimum(Xapp_dist,K)
     class[i] <- class_decision(zapp,index,K) 
+   
   }
-  
+
   return (class)
   
 }

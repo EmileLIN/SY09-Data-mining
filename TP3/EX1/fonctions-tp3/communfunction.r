@@ -58,9 +58,9 @@ norm_interval_confidence<-function(data,moyen,var,level)
 {
   n <- length(data)
   
-  z <- qt((1+level)/2,df=n-1)
+  z <- qnorm((1+level)/2,mean=0,sd=1)
  
-  IC<- c(moyen-z*var/sqrt(n),moyen+z*var/sqrt(n))
+  IC<- c(moyen-z*sqrt(var),moyen+z*sqrt(var))
   
   return (IC)
   
@@ -81,6 +81,9 @@ Estimation_interval_confiance_ceuc <- function(X,z,N,alpha)
     Xtst <- data_sep$Xtst
     ztst <- data_sep$ztst
     
+    nb_app <- dim(Xapp)[1]
+    nb_tst <- dim(Xtst)[1]
+    
     mu <- ceuc.app(Xapp,zapp)
     class_app <- ceuc.val(mu,Xapp)
     class_tst <- ceuc.val(mu,Xtst)
@@ -90,24 +93,23 @@ Estimation_interval_confiance_ceuc <- function(X,z,N,alpha)
     
     name <- paste(c("graphe_ceuc",i,".png"))
           
-    png(name)
-    front.ceuc(ceuc.val,mu,X,z)
-    dev.off()
   
     
   }
   
   moyen_Error_app <- mean(Error_app)
   moyen_Error_tst <- mean(Error_tst)
-  var_Error_app <- var(Error_app)
-  var_Error_tst <- var(Error_app)
+ 
+  var_Error_app <- moyen_Error_app*(1-moyen_Error_app)/(nb_app*N)
+  var_Error_tst <- moyen_Error_tst*(1-moyen_Error_tst)/(nb_tst*N)
   
   IC_app <-norm_interval_confidence(Error_app,moyen_Error_app,var_Error_app,alpha)
-
-  
   IC_tst <-norm_interval_confidence(Error_tst,moyen_Error_tst,var_Error_tst,alpha)
   
   res <- list()
+  
+  res$error_app <- Error_app
+  res$error_tst <- Error_tst
   res$moyen_app <-moyen_Error_app
   res$moyen_tst <-moyen_Error_tst
   res$IC_app <- IC_app
@@ -146,6 +148,9 @@ estimation_interval_confidence_ppv <- function(X,z,N,alpha)
     zval <- data_sep$zval
     Xtst <- data_sep$Xtst
     ztst <- data_sep$ztst
+    
+    nb_app <- dim(Xapp)[1]
+    nb_tst <- dim(Xtst)[1]
         
     K <- kppv.app(Xapp,zapp,Xval,zval,nppv)
     class_app <- kppv.val(Xapp,zapp,K,Xapp)
@@ -157,15 +162,15 @@ estimation_interval_confidence_ppv <- function(X,z,N,alpha)
   
   moyen_Error_app <- mean(Error_app)
   moyen_Error_tst <- mean(Error_tst)
-  var_Error_app <- var(Error_app)
-  var_Error_tst <- var(Error_app)
+  var_Error_app <- moyen_Error_app*(1-moyen_Error_app)/(nb_app*N)
+  var_Error_tst <- moyen_Error_tst*(1-moyen_Error_tst)/(nb_tst*N)
   
   IC_app <-norm_interval_confidence(Error_app,moyen_Error_app,var_Error_app,alpha)
-  
-  
   IC_tst <-norm_interval_confidence(Error_tst,moyen_Error_tst,var_Error_tst,alpha)
   
   res <- list()
+  res$error_app <- Error_app
+  res$error_tst <- Error_tst
   res$moyen_app <-moyen_Error_app
   res$moyen_tst <-moyen_Error_tst
   res$IC_app <- IC_app

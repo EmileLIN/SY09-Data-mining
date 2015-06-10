@@ -5,12 +5,13 @@ front.kppv <- function(kppv.val, K, Xapp, zapp)
 	minY <- min(Xapp[,2])-1
 	maxY <- max(Xapp[,2])+1
 	# grille d'affichage 
-	grilleX <- seq(from=minX,to=maxX,by=0.01)
+	grilleX <- seq(from=minX,to=maxX,by=0.1)
 	naffX <- length(grilleX)
-	grilleY <- seq(from=minY,to=maxY,by=0.01)
+	grilleY <- seq(from=minY,to=maxY,by=0.1)
 	naffY <- length(grilleY)
 
 	grille <- cbind(rep.int(grilleX,times=rep(naffY,naffX)),rep(grilleY,naffX))
+  print(grille)
 
 	# calcul des valeurs de la fonction 
 	valf <- kppv.val(Xapp, zapp, K, grille)
